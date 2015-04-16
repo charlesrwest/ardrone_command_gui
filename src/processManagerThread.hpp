@@ -62,17 +62,27 @@ void nodesOnline(const QString &);
 /*
 This signal is emitted when the status of the roscore process changes.
 */
-void rosCoreStatusChanged(bool ROSCoreOnline);
+void rosCoreStatusChanged(bool);
 
 /*
 This signal is emitted when the status of the ardrone_autonomy process changes.
 */
-void ARDroneAutonomyStatusChanged(bool ARDroneAutonomyOnline);
+void ARDroneAutonomyStatusChanged(bool);
 
 /*
 This signal is emitted when the status of the ardrone_command process changes.
 */
-void ARDroneCommandStatusChanged(bool ARDroneCommandOnline);
+void ARDroneCommandStatusChanged(bool);
+
+/*
+This signal is emitted when the status of the connection to the ardrone network changes.
+*/
+void ARDroneNetworkConnectionChanged(bool);
+
+/*
+This signal is emitted when the status of the connection to the ardrone network changes.
+*/
+void ARDroneNetworkConnectionStatus(const QString &);
 
 protected:
 bool roscoreOnline;
@@ -91,7 +101,11 @@ This function is called periodically to check the status of the monitored proces
 void timerEvent(QTimerEvent *inputTimerEvent) Q_DECL_OVERRIDE;
 };
 
-
+/*
+This function checks if the computer the program is currently running on is currently connected to an AR Drone.
+@return: True if connected, false if not
+*/
+bool computerIsCurrentlyConnectedToARDrone();
 
 
 

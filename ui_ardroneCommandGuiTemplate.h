@@ -42,7 +42,13 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *networkConnectionStatus;
     QLabel *ROSNodesStatusLabel;
+    QSpacerItem *horizontalSpacer_5;
     QLabel *flyingLandedLabel;
+    QFrame *batteryStatusFrame;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *batteryStatusStatic;
+    QSpacerItem *horizontalSpacer_6;
+    QLabel *batteryStatusLabel;
     QFrame *frame;
     QHBoxLayout *horizontalLayout_6;
     QLabel *currentCommandLabelStatic;
@@ -54,7 +60,6 @@ public:
     QSpacerItem *horizontalSpacer;
     QLabel *xVelocityLabel;
     QLabel *yVelocityLabel;
-    QLabel *zVelocityLabel;
     QFrame *tiltFrame;
     QHBoxLayout *horizontalLayout_5;
     QLabel *tiltXYZLabelStatic;
@@ -72,7 +77,7 @@ public:
     QFrame *frame_2;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label;
-    QComboBox *comboBox;
+    QComboBox *maneuverComboBox;
     QPushButton *executeManeuverPushButton;
     QSpacerItem *verticalSpacer;
     QPushButton *takeOffPushButton;
@@ -128,6 +133,10 @@ public:
 
         horizontalLayout_2->addWidget(ROSNodesStatusLabel);
 
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_5);
+
         flyingLandedLabel = new QLabel(flyingLandedNodeStatusFrame);
         flyingLandedLabel->setObjectName(QStringLiteral("flyingLandedLabel"));
 
@@ -135,6 +144,29 @@ public:
 
 
         verticalLayout_2->addWidget(flyingLandedNodeStatusFrame);
+
+        batteryStatusFrame = new QFrame(statusFrame);
+        batteryStatusFrame->setObjectName(QStringLiteral("batteryStatusFrame"));
+        batteryStatusFrame->setFrameShape(QFrame::NoFrame);
+        batteryStatusFrame->setFrameShadow(QFrame::Raised);
+        horizontalLayout_8 = new QHBoxLayout(batteryStatusFrame);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        batteryStatusStatic = new QLabel(batteryStatusFrame);
+        batteryStatusStatic->setObjectName(QStringLiteral("batteryStatusStatic"));
+
+        horizontalLayout_8->addWidget(batteryStatusStatic);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_6);
+
+        batteryStatusLabel = new QLabel(batteryStatusFrame);
+        batteryStatusLabel->setObjectName(QStringLiteral("batteryStatusLabel"));
+
+        horizontalLayout_8->addWidget(batteryStatusLabel);
+
+
+        verticalLayout_2->addWidget(batteryStatusFrame);
 
         frame = new QFrame(statusFrame);
         frame->setObjectName(QStringLiteral("frame"));
@@ -176,18 +208,15 @@ public:
 
         xVelocityLabel = new QLabel(speedStatusFrame);
         xVelocityLabel->setObjectName(QStringLiteral("xVelocityLabel"));
+        xVelocityLabel->setMinimumSize(QSize(80, 20));
 
         horizontalLayout_3->addWidget(xVelocityLabel);
 
         yVelocityLabel = new QLabel(speedStatusFrame);
         yVelocityLabel->setObjectName(QStringLiteral("yVelocityLabel"));
+        yVelocityLabel->setMinimumSize(QSize(80, 20));
 
         horizontalLayout_3->addWidget(yVelocityLabel);
-
-        zVelocityLabel = new QLabel(speedStatusFrame);
-        zVelocityLabel->setObjectName(QStringLiteral("zVelocityLabel"));
-
-        horizontalLayout_3->addWidget(zVelocityLabel);
 
 
         verticalLayout_2->addWidget(speedStatusFrame);
@@ -209,16 +238,19 @@ public:
 
         xTiltLabel = new QLabel(tiltFrame);
         xTiltLabel->setObjectName(QStringLiteral("xTiltLabel"));
+        xTiltLabel->setMinimumSize(QSize(80, 0));
 
         horizontalLayout_5->addWidget(xTiltLabel);
 
         yTiltLabel = new QLabel(tiltFrame);
         yTiltLabel->setObjectName(QStringLiteral("yTiltLabel"));
+        yTiltLabel->setMinimumSize(QSize(80, 0));
 
         horizontalLayout_5->addWidget(yTiltLabel);
 
         zTiltLabel = new QLabel(tiltFrame);
         zTiltLabel->setObjectName(QStringLiteral("zTiltLabel"));
+        zTiltLabel->setMinimumSize(QSize(80, 0));
 
         horizontalLayout_5->addWidget(zTiltLabel);
 
@@ -242,6 +274,7 @@ public:
 
         altitudeLabel = new QLabel(altitudeFrame);
         altitudeLabel->setObjectName(QStringLiteral("altitudeLabel"));
+        altitudeLabel->setMinimumSize(QSize(80, 0));
 
         horizontalLayout_4->addWidget(altitudeLabel);
 
@@ -276,10 +309,10 @@ public:
 
         horizontalLayout_7->addWidget(label);
 
-        comboBox = new QComboBox(frame_2);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
+        maneuverComboBox = new QComboBox(frame_2);
+        maneuverComboBox->setObjectName(QStringLiteral("maneuverComboBox"));
 
-        horizontalLayout_7->addWidget(comboBox);
+        horizontalLayout_7->addWidget(maneuverComboBox);
 
 
         verticalLayout_3->addWidget(frame_2);
@@ -332,12 +365,13 @@ public:
         networkConnectionStatus->setText(QApplication::translate("ardroneCommandGuiTemplate", "networkStatus", 0));
         ROSNodesStatusLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "ROSNodeStatus", 0));
         flyingLandedLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "flying/landed", 0));
+        batteryStatusStatic->setText(QApplication::translate("ardroneCommandGuiTemplate", "Battery status:", 0));
+        batteryStatusLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "batteryPercent", 0));
         currentCommandLabelStatic->setText(QApplication::translate("ardroneCommandGuiTemplate", "Current Command:", 0));
         currentCommandLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "currentCommandType", 0));
-        velocityLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "Velocity (xyz):", 0));
+        velocityLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "Velocity (xy):", 0));
         xVelocityLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "xVelocity", 0));
         yVelocityLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "yVelocity", 0));
-        zVelocityLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "zVelocity", 0));
         tiltXYZLabelStatic->setText(QApplication::translate("ardroneCommandGuiTemplate", "Tilt (xyz):", 0));
         xTiltLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "xTilt", 0));
         yTiltLabel->setText(QApplication::translate("ardroneCommandGuiTemplate", "yTilt", 0));

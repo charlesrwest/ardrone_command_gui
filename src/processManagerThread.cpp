@@ -149,6 +149,17 @@ This function is called periodically to check the status of the monitored proces
 */
 void processManagerThread::timerEvent(QTimerEvent *inputTimerEvent)
 {
+if(computerIsCurrentlyConnectedToARDrone())
+{
+emit ARDroneNetworkConnectionChanged(true);
+ARDroneNetworkConnectionStatus("Connected");
+}
+else
+{
+emit ARDroneNetworkConnectionChanged(false);
+ARDroneNetworkConnectionStatus("Disconnected");
+}
+
 //If ROS core isn't running, then start it (and associated processes)
 if(!commandIsRunning("roscore"))
 {
@@ -170,4 +181,33 @@ printf("ardrone_command not running\n");
 restartARDroneCommandAndAssociatedProcesses();
 }
 
+}
+
+
+/*
+This function checks if the computer the program is currently running on is currently connected to an AR Drone.
+@return: True if connected, false if not
+*/
+bool computerIsCurrentlyConnectedToARDrone()
+{
+//Run command
+FILE *commandOutput = popen("iw wlan0 link", "r");
+
+//Put results in a string
+char buffer[1024];
+int numberOfBytesRead = fread((void *) buffer, sizeof(char), 1024, commandOutput);
+
+if(numberOfBytesRead < 0)
+{
+return false; //Couldn't read, so return no to be safe
+}
+
+std::string recievedString(buffer, numberOfBytesRead);
+
+if(recievedString.find("ardrone") != std::string::npos)
+{
+return true;
+}
+
+return false;
 }

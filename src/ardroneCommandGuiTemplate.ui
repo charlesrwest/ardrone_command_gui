@@ -70,9 +70,61 @@
               </widget>
              </item>
              <item>
+              <spacer name="horizontalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QLabel" name="flyingLandedLabel">
                <property name="text">
                 <string>flying/landed</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="batteryStatusFrame">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QLabel" name="batteryStatusStatic">
+               <property name="text">
+                <string>Battery status:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="batteryStatusLabel">
+               <property name="text">
+                <string>batteryPercent</string>
                </property>
               </widget>
              </item>
@@ -130,7 +182,7 @@
              <item>
               <widget class="QLabel" name="velocityLabel">
                <property name="text">
-                <string>Velocity (xyz):</string>
+                <string>Velocity (xy):</string>
                </property>
               </widget>
              </item>
@@ -149,6 +201,12 @@
              </item>
              <item>
               <widget class="QLabel" name="xVelocityLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>20</height>
+                </size>
+               </property>
                <property name="text">
                 <string>xVelocity</string>
                </property>
@@ -156,15 +214,14 @@
              </item>
              <item>
               <widget class="QLabel" name="yVelocityLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>20</height>
+                </size>
+               </property>
                <property name="text">
                 <string>yVelocity</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="zVelocityLabel">
-               <property name="text">
-                <string>zVelocity</string>
                </property>
               </widget>
              </item>
@@ -202,6 +259,12 @@
              </item>
              <item>
               <widget class="QLabel" name="xTiltLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="text">
                 <string>xTilt</string>
                </property>
@@ -209,6 +272,12 @@
              </item>
              <item>
               <widget class="QLabel" name="yTiltLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="text">
                 <string>yTilt</string>
                </property>
@@ -216,6 +285,12 @@
              </item>
              <item>
               <widget class="QLabel" name="zTiltLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="text">
                 <string>zTilt</string>
                </property>
@@ -255,6 +330,12 @@
              </item>
              <item>
               <widget class="QLabel" name="altitudeLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="text">
                 <string>altitude</string>
                </property>
@@ -301,7 +382,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox"/>
+           <widget class="QComboBox" name="maneuverComboBox"/>
           </item>
          </layout>
         </widget>
