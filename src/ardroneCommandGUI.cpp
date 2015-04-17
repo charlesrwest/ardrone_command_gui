@@ -209,7 +209,7 @@ commands.push_back(commandGoToQRCodePoint);
 
 
 
-command QRCodePointWait1; QRCodePointWait1.setWaitUntilPositionAtSpecificQRCodePointReachedCommand(100.0);
+command QRCodePointWait1; QRCodePointWait1.setWaitUntilPositionAtSpecificQRCodePointReachedCommand(100.0,.2);
 commands.push_back(QRCodePointWait1);
 
 command commandWait2;
